@@ -35,9 +35,12 @@ body {
 }
 
 .zero, .point {
-    margin-top: -69px;
+    margin-top: -60px;
 }
 
 .display {
     margin: 5px;
+    width: 20vw;
+    height: 5vw;
+    border: 1px solid black;
 }
