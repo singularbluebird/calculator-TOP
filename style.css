@@ -26,16 +26,13 @@ body {
 
 .equals {
     width: 5vw;
-    height: 10vw;
+    height: 11.6vw;
+    margin-top: -6.5vw;
 }
 
 .zero {
     width: 10vw;
     height: 5vw;
-}
-
-.zero, .point {
-    margin-top: -60px;
 }
 
 .display {
