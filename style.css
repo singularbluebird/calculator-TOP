@@ -12,7 +12,32 @@ body {
 .calculator {
     border: 1px solid rgb(166, 165, 165);
     display: flex;
-    width: 40vw;
-    height: 20vw;
-    flex-direction: column;
+    width: 20vw;
+    height: 40vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 0 0 auto;
+}
+
+.number, .delete, .clear, .multiply, .divide, .subtract, .add, .point {
+    height: 5vw;
+    width: 5vw;
+}
+
+.equals {
+    width: 5vw;
+    height: 10vw;
+}
+
+.zero {
+    width: 10vw;
+    height: 5vw;
+}
+
+.zero, .point {
+    margin-top: -69px;
+}
+
+.display {
+    margin: 5px;
 }
