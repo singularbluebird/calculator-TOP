@@ -1,0 +1,18 @@
+body, html {
+    width: 99%;
+    height: 99%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    border: 1px solid rgb(166, 165, 165);
+    display: flex;
+    width: 40vw;
+    height: 20vw;
+    flex-direction: column;
+}
