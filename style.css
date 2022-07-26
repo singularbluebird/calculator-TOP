@@ -69,3 +69,6 @@ body {
     margin-top: -5vw;
 }
 
+.clear, .delete, .multiply, .divide, .subtract, .add {
+    background-color: rgb(65, 65, 65);
+}
