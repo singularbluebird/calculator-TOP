@@ -47,6 +47,7 @@ let args = [];
 const ac = document.querySelector(".clear");
 ac.addEventListener("click", () => {
     display.textContent = "";
+    args = [];
 });
 
 const backspace = document.querySelector(".delete");
@@ -64,20 +65,28 @@ const operators = [times, divideBy, plus, minus];
 
 for (let operator of operators) {
     operator.addEventListener("click", () => {
-        if (display.textContent !== "") {
+        if (display.textContent !== "" && args.length === 0) {
             args.push(operator.textContent);
             args.push(parseInt(display.textContent));
             display.textContent = "";
-        } 
+        }
+        else if (args.length === 2) {
+            args.push(parseInt(display.textContent));
+            displayResult();
+            args.push(operator.textContent);
+            args.push(parseInt(display.textContent));
+        }
     });
 }
 
-equals.addEventListener("click", () => {
+equals.addEventListener("click", () => displayResult());
+
+const displayResult = function() {
     if (display.textContent !== "") {
         args.push(parseInt(display.textContent));
         let result = operate(args[0], args[1], args[2]);
         display.textContent = result;
         args = [];
     }
-});
+}
 
