@@ -22,7 +22,7 @@ const operate = function(operator, a, b) {
         case "-":
             return subtract(a, b);
             break;
-        case "*":
+        case "X":
             return multiply(a, b);
             break;
         case "/":
@@ -42,6 +42,8 @@ for(const number of numbers) {
     });
 }
 
+let args = [];
+
 const ac = document.querySelector(".clear");
 ac.addEventListener("click", () => {
     display.textContent = "";
@@ -57,4 +59,25 @@ const divideBy = document.querySelector(".divide");
 const plus = document.querySelector(".add");
 const minus = document.querySelector(".subtract");
 const equals = document.querySelector(".equals");
+
+const operators = [times, divideBy, plus, minus];
+
+for (let operator of operators) {
+    operator.addEventListener("click", () => {
+        if (display.textContent !== "") {
+            args.push(operator.textContent);
+            args.push(parseInt(display.textContent));
+            display.textContent = "";
+        } 
+    });
+}
+
+equals.addEventListener("click", () => {
+    if (display.textContent !== "") {
+        args.push(parseInt(display.textContent));
+        let result = operate(args[0], args[1], args[2]);
+        display.textContent = result;
+        args = [];
+    }
+});
 
