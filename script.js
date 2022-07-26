@@ -51,3 +51,10 @@ const backspace = document.querySelector(".delete");
 backspace.addEventListener("click", () => {
     display.textContent = display.textContent.slice(0, display.textContent.length - 1);
 });
+
+const times = document.querySelector(".multiply");
+const divideBy = document.querySelector(".divide");
+const plus = document.querySelector(".add");
+const minus = document.querySelector(".subtract");
+const equals = document.querySelector(".equals");
+
