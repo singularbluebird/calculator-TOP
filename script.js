@@ -32,3 +32,17 @@ const operate = function(operator, a, b) {
             return "Something went wrong!";
     }
 }
+
+const numbers = document.querySelectorAll(".number");
+const display = document.querySelector(".display");
+
+for(const number of numbers) {
+    number.addEventListener("click", () => {
+        display.textContent += number.textContent;
+    });
+}
+
+const ac = document.querySelector(".clear");
+ac.addEventListener("click", () => {
+    display.textContent = "";
+});
