@@ -46,3 +46,8 @@ const ac = document.querySelector(".clear");
 ac.addEventListener("click", () => {
     display.textContent = "";
 });
+
+const backspace = document.querySelector(".delete");
+backspace.addEventListener("click", () => {
+    display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+});
