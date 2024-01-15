@@ -1,3 +1,7 @@
+let first_number = '';
+let operand = '';
+let second_number = '';
+
 const add = function(a, b) {
     return a + b;
 }
@@ -14,19 +18,19 @@ const divide = function(a, b) {
     return a / b;
 }
 
-const operate = function(operator, a, b) {
+const operate = function(number1, operator, number2) {
     switch(operator) {
         case "+":
-            return add(a, b);
+            return add(number1, number2);
             break;
         case "-":
-            return subtract(a, b);
+            return subtract(number1, number2);
             break;
-        case "X":
-            return multiply(a, b);
+        case "*":
+            return multiply(number1, number2);
             break;
         case "/":
-            return divide(a, b);
+            return divide(number1, number2);
             break;
         default:
             return "Something went wrong!";
@@ -35,19 +39,29 @@ const operate = function(operator, a, b) {
 
 const numbers = document.querySelectorAll(".number");
 const display = document.querySelector(".display");
+const buttons = document.querySelectorAll("button");
 
 for(const number of numbers) {
-    number.addEventListener("click", () => {
-        display.textContent += number.textContent;
+    number.addEventListener("click", (disp) => {
+	    if (display.textContent === '' && first_number === '' && second_number === '' && operand === '') {
+		display.innerHTML += number.innerHTML;
+	    }
+	    else if (first_number !== '' && operand !== '' && display.textContent !== '') {
+		display.innerHTML = number.innerHTML;
+	    }
+	    else {
+		    display.innerHTML += number.innerHTML;
+	    }
     });
 }
 
-let args = [];
 
 const ac = document.querySelector(".clear");
 ac.addEventListener("click", () => {
     display.textContent = "";
-    args = [];
+	first_number = '';
+	second_number = '';
+	operand = '';
 });
 
 const backspace = document.querySelector(".delete");
@@ -62,9 +76,13 @@ const minus = document.querySelector(".subtract");
 const equals = document.querySelector(".equals");
 
 const operators = [times, divideBy, plus, minus];
-
+/*
 for (let operator of operators) {
     operator.addEventListener("click", () => {
+
+	if (args.length === 3) {
+
+	}
         if (display.textContent !== "" && args.length === 0) {
             args.push(operator.textContent);
             args.push(parseInt(display.textContent));
@@ -78,15 +96,32 @@ for (let operator of operators) {
         }
     });
 }
+*/
+for (let operator of operators) {
+	operator.addEventListener('click', () => {
+		if (display.textContent !== '' && first_number === '') {
+			first_number = parseInt(display.textContent);
+			operand = operator.textContent;
+		}
+		else if (first_number !== '' && operand !== '' && display.textContent !== '') {
+			let holder = first_number;
+			second_number = parseInt(display.textContent);
+			first_number = operate(holder, operand, second_number)
+			operand = operator.textContent;
+			display.textContent = first_number;
+		}
+	});
+}
 
 equals.addEventListener("click", () => displayResult());
 
 const displayResult = function() {
-    if (display.textContent !== "") {
-        args.push(parseInt(display.textContent));
-        let result = operate(args[0], args[1], args[2]);
-        display.textContent = result;
-        args = [];
-    }
+	if (display.textContent !== '' && first_number !== '' && operand !== '') {
+		let result = operate(first_number, operand, parseInt(display.textContent));
+		display.textContent = result;
+	}
+	else {
+		let result = operate(first_number, operator, parseInt(display.textContent));
+		display.textContent = result;
+	}
 }
-
