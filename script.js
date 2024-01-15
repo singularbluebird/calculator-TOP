@@ -76,27 +76,7 @@ const minus = document.querySelector(".subtract");
 const equals = document.querySelector(".equals");
 
 const operators = [times, divideBy, plus, minus];
-/*
-for (let operator of operators) {
-    operator.addEventListener("click", () => {
 
-	if (args.length === 3) {
-
-	}
-        if (display.textContent !== "" && args.length === 0) {
-            args.push(operator.textContent);
-            args.push(parseInt(display.textContent));
-            display.textContent = "";
-        }
-        else if (args.length === 2) {
-            args.push(parseInt(display.textContent));
-            displayResult();
-            args.push(operator.textContent);
-            args.push(parseInt(display.textContent));
-        }
-    });
-}
-*/
 for (let operator of operators) {
 	operator.addEventListener('click', () => {
 		if (display.textContent !== '' && first_number === '') {
